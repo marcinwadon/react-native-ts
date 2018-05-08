@@ -1,10 +1,8 @@
+import { CounterAction } from 'lib/counter'
+import { IState, store } from 'lib/store'
 import * as React from 'react'
-import { Platform, StyleSheet, Text, View } from 'react-native'
-
-const instructions = Platform.select({
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-})
+import { Button, StyleSheet, Text, View } from 'react-native'
+import { connect, Dispatch, Provider } from 'react-redux'
 
 const styles = StyleSheet.create({
   container: {
@@ -25,21 +23,45 @@ const styles = StyleSheet.create({
   },
 })
 
-type Props = {}
-export class App extends React.Component<Props> {
-  public render(): React.ReactNode {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    )
-  }
+interface IStateProps {
+  readonly counter: number,
 }
+
+interface IDispatchProps {
+  readonly decrement: () => void,
+  readonly increment: () => void,
+}
+
+interface IProps extends IStateProps, IDispatchProps {
+}
+
+const AppComponent: React.SFC<IProps> = ({ counter, decrement, increment }) => (
+  <View style={styles.container}>
+    <Text style={styles.welcome}>
+      Counter!
+    </Text>
+    <Button onPress={decrement} title='-'/>
+    <Text style={styles.instructions}>
+      {counter}
+    </Text>
+    <Button onPress={increment} title='+'/>
+  </View>
+)
+
+const mapStateToProps = (state: IState): IStateProps => ({ counter: state.counter })
+const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
+  decrement: () => {
+    dispatch(CounterAction.decrement())
+  },
+  increment: () => {
+    dispatch(CounterAction.increment())
+  },
+})
+
+const AppWithoutStore = connect(mapStateToProps, mapDispatchToProps)(AppComponent)
+
+export const App = () => (
+  <Provider store={store}>
+    <AppWithoutStore/>
+  </Provider>
+)
