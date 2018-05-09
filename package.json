@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.3",
+    "react-navigation": "^2.0.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   },
@@ -50,9 +51,12 @@
       "\\.snap$",
       "<rootDir>/node_modules/"
     ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ],
     "moduleDirectories": [
       "node_modules",
-      "./"
+      "./app"
     ],
     "cacheDirectory": ".jest/cache"
   }
