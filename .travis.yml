@@ -8,10 +8,12 @@ cache:
     - "node_modules"
 
 env:
-  - CI=true
+  global:
+    - CI=true
+    - NODE_ENV=production
 
 install:
-  - yarn
+  - yarn --production=false
 
 script:
   - yarn run ci-verify
