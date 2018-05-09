@@ -15,6 +15,7 @@
       "allow-pascal-case",
       "allow-trailing-underscore",
       "ban-keywords"
-    ]
+    ],
+    "readonly-array": false
   }
 }

@@ -1,4 +1,4 @@
-import { ActionsUnion, createAction } from 'common/redux/action'
+import { ActionsUnion, createAction } from 'app/common/redux'
 
 export enum CounterActionType {
   Decrement = 'DECREMENT',

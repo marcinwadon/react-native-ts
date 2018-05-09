@@ -1,8 +1,8 @@
-import { CounterAction } from 'lib/counter'
-import { IState, store } from 'lib/store'
 import * as React from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
 import { connect, Dispatch, Provider } from 'react-redux'
+import { CounterAction } from './lib/counter'
+import { IState, store } from './lib/store'
 
 const styles = StyleSheet.create({
   container: {
