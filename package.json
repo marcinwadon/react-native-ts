@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "tslint --project tsconfig.json"
+    "tdd": "jest --watch",
+    "lint": "tslint --project tsconfig.json",
+    "ci-verify": "yarn run lint && yarn test"
   },
   "dependencies": {
     "react": "16.3.1",
@@ -46,6 +48,7 @@
       "\\.snap$",
       "<rootDir>/node_modules/"
     ],
+    "moduleDirectories": ["node_modules", "./"],
     "cacheDirectory": ".jest/cache"
   }
 }
