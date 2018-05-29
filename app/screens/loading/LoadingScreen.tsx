@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Text, View } from 'react-native'
 import { RootScreens } from 'screens/stack'
 
-const LOADING_TIME = 3000
+const LOADING_TIME = 300
 
 interface IProps extends NavigationProps {
 }

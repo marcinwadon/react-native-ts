@@ -1,4 +1,5 @@
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
+import { SignInScreen } from 'screens/auth/login'
 import { HomeScreen } from './home'
 import { LoadingScreen } from './loading'
 
@@ -7,7 +8,7 @@ export enum AuthScreens {
 }
 
 const AuthStack = createStackNavigator({
-  SignIn: HomeScreen,
+  SignIn: SignInScreen,
 })
 
 export enum RootScreens {
